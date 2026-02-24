@@ -2,8 +2,8 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
-import { createHead, UnheadProvider } from '../src/client'
-import { renderSSRHead, transformHtmlTemplate } from '../src/server'
+import { UnheadProvider } from '../src/client'
+import { createHead, renderSSRHead, transformHtmlTemplate } from '../src/server'
 import { SimpleHead } from './fixtures/SimpleHead'
 
 describe('simpleHead component in ssr', () => {
@@ -18,7 +18,8 @@ describe('simpleHead component in ssr', () => {
 
     const { headTags } = await renderSSRHead(head)
     expect(headTags).toMatchInlineSnapshot(`
-      "<meta name="viewport" content="width=device-width, initial-scale=1">
+      "<meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Default Title 2</title>
       <script async src="https://example.com/async-script.js"></script>
       <script noModule src="https://example.com/nomodule.js"></script>
@@ -53,7 +54,8 @@ describe('simpleHead component in ssr', () => {
 
     const headContent = transformed.match(/<head>(.*?)<\/head>/s)?.[1] || ''
     expect(headContent).toMatchInlineSnapshot(`
-      "<meta name="viewport" content="width=device-width, initial-scale=1">
+      "<meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Default Title 2</title>
       <script async src="https://example.com/async-script.js"></script>
       <script noModule src="https://example.com/nomodule.js"></script>
