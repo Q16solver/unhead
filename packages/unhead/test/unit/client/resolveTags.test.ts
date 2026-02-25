@@ -58,6 +58,7 @@ describe('resolveTags', () => {
         },
         {
           "_d": undefined,
+          "_h": "script:src:https://cdn.example.com/script.js",
           "_p": 1026,
           "_w": 50,
           "props": {
@@ -88,6 +89,7 @@ describe('resolveTags', () => {
         },
         {
           "_d": undefined,
+          "_h": "link:rel:icon,type:image/x-icon,href:https://cdn.example.com/favicon.ico",
           "_p": 1028,
           "_w": 100,
           "props": {
@@ -122,6 +124,7 @@ describe('resolveTags', () => {
       [
         {
           "_d": undefined,
+          "_h": "script:src:https://cdn.example.com/script2.js",
           "_p": 2048,
           "_w": 50,
           "props": {
@@ -162,6 +165,7 @@ describe('resolveTags', () => {
         },
         {
           "_d": undefined,
+          "_h": "script:src:https://cdn.example.com/script2.js",
           "_p": 1026,
           "_w": 50,
           "props": {
@@ -192,6 +196,7 @@ describe('resolveTags', () => {
         },
         {
           "_d": undefined,
+          "_h": "link:rel:icon,type:image/x-icon,href:https://cdn.example.com/favicon.ico",
           "_p": 1028,
           "_w": 100,
           "props": {

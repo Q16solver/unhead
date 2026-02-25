@@ -36,6 +36,7 @@ describe('vue promises', () => {
         },
         {
           "_d": undefined,
+          "_h": "script:src:https://example.com/script.js",
           "_p": 1025,
           "_w": 50,
           "props": {

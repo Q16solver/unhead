@@ -38,7 +38,7 @@ export async function renderDOMHead<T extends Unhead<any>>(head: T, options: Ren
             const count = dupeKeyCounter.get(tag._d!) || 0
             const res = {
               tag,
-              id: (count ? `${tag._d}:${count}` : tag._d) || hashTag(tag),
+              id: (count ? `${tag._d}:${count}` : tag._d) || tag._h!,
               shouldRender: true,
             }
             if (tag._d && isMetaArrayDupeKey(tag._d)) {
