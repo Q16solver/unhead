@@ -12,7 +12,7 @@ import type {
 } from './types'
 import { createHooks } from 'hookable'
 import { isMetaArrayDupeKey, sortTags, tagWeight, UsesMergeStrategy, ValidHeadTags } from './utils'
-import { dedupeKey } from './utils/dedupe'
+import { dedupeKey, hashTag } from './utils/dedupe'
 import { normalizeEntryToTags } from './utils/normalize'
 
 function registerPlugin(head: Unhead<any>, p: HeadPluginInput) {
@@ -111,6 +111,8 @@ export function createUnhead<T = ResolvableHead>(resolvedOptions: CreateHeadOpti
             t._w = tagWeight(head, t)
             t._p = (e._i << 10) + i
             t._d = dedupeKey(t)
+            if (!t._d)
+              t._h = hashTag(t)
             return t
           })
         }
@@ -120,7 +122,7 @@ export function createUnhead<T = ResolvableHead>(resolvedOptions: CreateHeadOpti
         .flatMap(e => (e._tags || []).map(t => ({ ...t, props: { ...t.props } })))
         .sort(sortTags)
         .reduce((acc, next) => {
-          const k = String(next._d || next._p)
+          const k = next._d || next._h!
           if (!acc.has(k))
             return acc.set(k, next)
 
