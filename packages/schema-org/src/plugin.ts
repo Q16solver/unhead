@@ -176,6 +176,8 @@ export function SchemaOrgUnheadPlugin(config: MetaInput, meta: () => Partial<Met
           let firstNodeKey: number | undefined
           for (const k in ctx.tags) {
             const tag = ctx.tags[k]
+            if (!tag)
+              continue
             if ((tag.props.type === 'application/ld+json' && tag.props.nodes) || tag.key === 'schema-org-graph') {
               delete tag.props.nodes
               if (typeof firstNodeKey === 'undefined') {
